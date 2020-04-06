@@ -1,6 +1,6 @@
 name: "my-website"
 navbar:
-  title: "My Website"
+  title: "Group 19"
   left:
     - text: "10 Clustering Lab"
       href: index.html

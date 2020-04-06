@@ -267,7 +267,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">My Website</a>
+      <a class="navbar-brand" href="index.html">Group 19</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -306,6 +306,12 @@ $(document).ready(function () {
 <h1>2. Dataset Background</h1>
 <p>We use the ‘USArrests’ dataset, which is part of the base R package (for more information, type ?USArrests in your R console). This is a real dataset; we do not create it on the fly. We use the attach() function to quickly access it throughout this script.</p>
 <pre class="r"><code>attach(USArrests)</code></pre>
+<pre><code>## The following objects are masked from USArrests (pos = 3):
+## 
+##     Assault, Murder, Rape, UrbanPop</code></pre>
+<pre><code>## The following objects are masked from USArrests (pos = 4):
+## 
+##     Assault, Murder, Rape, UrbanPop</code></pre>
 <p>Let’s examine the dataset. The dataset has 50 rows, one for each US state, and 4 columns: (Murder, Assault, UrbanPop, and Rape).</p>
 <pre class="r"><code>(states = row.names(USArrests))</code></pre>
 <pre><code>##  [1] &quot;Alabama&quot;        &quot;Alaska&quot;         &quot;Arizona&quot;        &quot;Arkansas&quot;      

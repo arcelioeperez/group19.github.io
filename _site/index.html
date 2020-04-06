@@ -267,7 +267,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">My Website</a>
+      <a class="navbar-brand" href="index.html">Group 19</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -310,7 +310,8 @@ x[1:25,2] &lt;- x[1:25,2] -4</code></pre>
 <h2>3/4. Dataset Exploration, Variable Transformation</h2>
 <p>The lab does not feature any dataset exploration. However, for the sake of illustrating the existing divide between the two groups of data, here is a scatter plot:</p>
 <pre class="r"><code>plot(x)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="672" /> There is no variable transformation applied for the first half of this lab, but for hierarchical clustering we will be using variable scaling later.</p>
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>There is no variable transformation applied for the first half of this lab, but for hierarchical clustering we will be using variable scaling later.</p>
 </div>
 <div id="running-the-kmeans-function---k-means-clustering" class="section level2">
 <h2>5. Running the kmeans() Function - K-Means Clustering</h2>
@@ -375,7 +376,8 @@ hc.single &lt;- hclust(dist_matrix,method=&quot;single&quot;)</code></pre>
 plot(hc.complete, main=&quot;Complete Linkage&quot;, xlab=&quot;&quot;, sub=&quot;&quot;, cex=0.9)
 plot(hc.average, main=&quot;Average Linkage&quot;, xlab=&quot;&quot;, sub=&quot;&quot;, cex=0.9)
 plot(hc.single, main=&quot;Single Linkage&quot;, xlab=&quot;&quot;, sub =&quot;&quot;, cex=0.9)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" width="672" /> And from the hclust() outputs form before, we can obtain the clustering labels per observation associated with a given cut of the dendrogram by using the cutree() function. We give the function the 2 in the second argument to specify we want 2 clusters:</p>
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>And from the hclust() outputs form before, we can obtain the clustering labels per observation associated with a given cut of the dendrogram by using the cutree() function. We give the function the 2 in the second argument to specify we want 2 clusters:</p>
 <pre class="r"><code>cutree(hc.complete,2)</code></pre>
 <pre><code>##  [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2
 ## [36] 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2</code></pre>
@@ -396,7 +398,8 @@ plot(hc.single, main=&quot;Single Linkage&quot;, xlab=&quot;&quot;, sub =&quot;&
 <p>Variable Scaling - it might be necessary to scale variables before performing hierarchical clustering.</p>
 <pre class="r"><code>xsc &lt;- scale(x)
 plot(hclust(dist(xsc),method=&quot;complete&quot;),main=&quot;Hierarchical Clustering with Scaled Features&quot;)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-14-1.png" width="672" /> Using the as.dist() function: as.dist() can be used to compute correlation-based distance, and allows to go from a square symmetric matrix to a distance matrix. This matrix can then be passed to the hclust() function:</p>
+<p><img src="index_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p>Using the as.dist() function: as.dist() can be used to compute correlation-based distance, and allows to go from a square symmetric matrix to a distance matrix. This matrix can then be passed to the hclust() function:</p>
 <pre class="r"><code>x &lt;- matrix (rnorm (30*3) , ncol =3)
 dd=as.dist(1- cor(t(x)))
 plot(hclust(dd,method=&quot;complete&quot;),

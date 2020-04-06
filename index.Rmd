@@ -21,10 +21,11 @@ x[1:25,2] <- x[1:25,2] -4
 ## 3/4. Dataset Exploration, Variable Transformation
 The lab does not feature any dataset exploration. However, for the sake of
 illustrating the existing divide between the two groups of data, here is a scatter plot:
+
 ```{r echo = TRUE}
 plot(x)
-
 ```
+
 There is no variable transformation applied for the first half of this lab, but for hierarchical
 clustering we will be using variable scaling later.
 
@@ -108,6 +109,7 @@ plot(hc.complete, main="Complete Linkage", xlab="", sub="", cex=0.9)
 plot(hc.average, main="Average Linkage", xlab="", sub="", cex=0.9)
 plot(hc.single, main="Single Linkage", xlab="", sub ="", cex=0.9)
 ```
+
 And from the hclust() outputs form before, we can obtain the clustering labels per observation
 associated with a given cut of the dendrogram by using the cutree() function. We give the function
 the 2 in the second argument to specify we want 2 clusters:
@@ -135,6 +137,7 @@ Variable Scaling - it might be necessary to scale variables before performing hi
 xsc <- scale(x)
 plot(hclust(dist(xsc),method="complete"),main="Hierarchical Clustering with Scaled Features")
 ```
+
 Using the as.dist() function: as.dist() can be used to compute correlation-based distance, and allows
 to go from a square symmetric matrix to a distance matrix. This matrix can then be passed to the
 hclust() function:
