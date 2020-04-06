@@ -2,10 +2,10 @@ name: "my-website"
 navbar:
   title: "Group 19"
   left:
-    - text: "10 Clustering Lab"
-      href: index.html
     - text: "10 PCA Lab"
       href: about.html
+    - text: "Applied Exercise - 8"
+      href: index.html
 output: 
   html_document: 
     theme: cosmo 
