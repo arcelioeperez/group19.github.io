@@ -2,9 +2,9 @@ name: "my-website"
 navbar:
   title: "My Website"
   left:
-    - text: "Home"
+    - text: "10 Clustering Lab"
       href: index.html
-    - text: "About"
+    - text: "10 PCA Lab"
       href: about.html
 output: 
   html_document: 

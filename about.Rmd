@@ -1,3 +1,154 @@
 ---
-title: "about"
----
+title: "10 PCA Lab"
+--- 
+
+## 1. Objective 
+
+We are trying to identify the principal components in the dataset. Principal components are
+essentially linear combinations of the different variables in the data, set up to have as high
+a variance as possible, in an attempt to explain as much of the variation in the data as possible.
+This is done for 2 reasons:
+
+- To perform explanatory data analysis, and uncover relationships between the variables in the
+dataset; for example, which variables are closely correlated. This is the topic of this lab.
+    
+- To use the principal components in a regression setting (see: Principal Component Regression).
+The derived principal components are used in a regression model instead of the original variables,
+since we can usually explain the same amount of variation in the data with a lower number of P.C.
+than the number of original variables. This method has the advantage of producing models with lower
+complexity and hence, it reduces the variance of estimates. 
+
+# 2. Dataset Background 
+
+We use the 'USArrests' dataset, which is part of the base R package (for more information,
+type ?USArrests in your R console). This is a real dataset; we do not create it on the fly.
+We use the attach() function to quickly access it throughout this script. 
+
+```{r echo = TRUE}
+attach(USArrests)
+```
+
+Let's examine the dataset. The dataset has 50 rows, one for each US state, and 4 columns:
+(Murder, Assault, UrbanPop, and Rape).
+```{r echo = TRUE}
+(states = row.names(USArrests))
+(names(USArrests))
+```
+
+## 3. Dataset Exploration 
+
+Using the apply() function, we can quickly examine the means and variances of each variable.
+We apply the mean() and var() functions directly over the full 4 columns in the dataset:
+
+```{r echo = TRUE}
+(apply(USArrests,2,mean))
+(apply(USArrests,2,var))
+```
+
+We can immediately see that the different variables have very different distributions, both
+in terms of their means and variances. 
+
+## 4. Variable Transformation 
+
+We will have to scale the variables before proceeding with Principal Components Analysis.
+Remember that PCA creates linear combinations of the different variables that attempt to 
+maximize total variance; in order for the the principal components to be relevant, we must
+scale the variables first, otherwise each PC will simply prominently feature the variable
+with the largest mean & variance - here, Assault.
+
+This is done through the scale=TRUE argument when running PCA; see section 5 below. 
+
+## 5. Running PCA - the prcomp() function
+
+We use the prcomp() function to perform PCA - this is one of multiple ways it can be achieved.
+NB - scaling: by default, the prcomp() function will set the variable means to 0. Using
+scale=TRUE also scales the variables to have standard deviation = 1. 
+
+```{r echo = TRUE}
+pr.out <- prcomp(USArrests,scale=TRUE)
+```
+
+We can still access the means and standard deviations of the variables used for scaling before calling
+the prcomp() function; this is contained within the pr.out results: 
+
+```{r echo = TRUE}
+(names(pr.out))
+# namely the center & scale elements:
+(pr.out$center)
+(pr.out$scale) 
+```
+Another important element of the PCA output is the rotation matrix, which provides the principal
+component loading vectors:
+
+```{r echo = TRUE}
+(pr.out$rotation)
+``` 
+
+In general, we can expect the number of informative principal component vectors to be the smallest
+between the number of variables (p) and the # of observations in the dataset (n) minus one: min(n-1,p)
+This holds true in this case and we see that 'rotation' provides us with the 4 principal component
+loading vectors, and p = 4.
+
+Usually, to obtain the principal component score vectors, we must multiply loading vectors by the data.
+The prcomp() function simplifies this by providing them as the 'x' element in the output:
+
+```{r echo = TRUE}
+(pr.out$x)
+``` 
+
+The x matrix is 50x4 in this case, with every column corresponding to a principal component score vector
+in order - PC1, PC2, etc.
+```{r echo = TRUE}
+(dim(pr.out$x))
+``` 
+
+Now let us look at the first two PCs in a biplot. Biplots are named after their ability to simultaneously
+display the principal component scores and loadings.
+
+```{r echo = TRUE}
+biplot(pr.out,scale=0)
+``` 
+
+For a specific variable, the PC1 loading is the upper axis, and the PC2 loading is the right axis.
+For example, the plot tells us that Rape has a loading of -0.54 on the first component and -0.17 
+on the second component - this is where the word 'Rape' stands on the plot.
+
+The lab also illustrates how these vector representations can easily be mirrored by switching the signs
+of the vectors used - and how this shows that principal components are only unique up to a sign change:
+
+```{r echo = TRUE}
+pr.out$rotation <- -pr.out$rotation
+pr.out$x <- -pr.out$x
+biplot(pr.out,scale = 0)
+```
+
+We now see an exact mirror of the plot previously obtained. Note how Rape now has a loading of 0.54 on
+the first component and 0.17 on the second component.
+
+This plot does a good job at providing us with information on the variables. We see that Murder, Assault
+and Rape are closely packed together on the graph, indicating that they are highly correlated.
+On the other hand, UrbanPop is further apart, indicating a lower correlation with the other 3 variables.
+
+As mentioned previously, the point of using principal components is to try to explain as much of the
+variation in the data as possible through them. Therefore, we would like to check a figure for this,
+and see how well they perform.
+We start by taking the 'sdev' element from the pr.out output, which shows the standard deviation
+of each principal component: 
+
+```{r echo = TRUE}
+(pr.out$sdev)
+# By squaring these figures, we obtain the variance explained by each principal component:
+pr.var <- pr.out$sdev^2
+(pr.var)
+# And to see the proportion of variation explained by each PC, we can divide its variance by the sum
+# of variances:
+pve <- pr.var / sum(pr.var)
+(pve)
+# For example we see that the first principal component explains a bit over 62% of the variation in the data.
+# We also present this in visual form as follows.
+plot(pve, xlab="Principal Component", ylab=" Proportion of Variance Explained ",ylim=c(0,1) ,type='b')
+# Another visualization shows the cumulative amount of variance explained by the different PCs:
+plot(cumsum(pve),xlab="Principal Component",ylab ="Cumulative Proportion of Variance Explained", 
+     ylim=c(0,1), type='b')
+# Note the use of the cumsum() function.
+```
