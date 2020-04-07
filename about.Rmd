@@ -24,7 +24,7 @@ We use the 'USArrests' dataset, which is part of the base R package (for more in
 type ?USArrests in your R console). This is a real dataset; we do not create it on the fly.
 We use the attach() function to quickly access it throughout this script. 
 
-```{r echo = FALSE}
+```{r echo = TRUE}
 attach(USArrests)
 ```
 

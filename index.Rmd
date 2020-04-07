@@ -11,13 +11,17 @@ On the USArrests data, calculate PVE in two ways:
 # Part (a) 
 Using the sdev output of the prcomp() function, as was done in
 Section 10.2.3.
-```{r echo = FALSE}
+```{r echo = TRUE}
 rm(list=ls())
 ```
 
 ```{r echo = TRUE}
 #use the attach() function to quickly access targeted dataset.
 attach(USArrests)
+```
+
+
+```{r echo = TRUE}
 #use prcomp() funtion to perform PCA, by setting scale=true, standard deviation =1
 pr.out <- prcomp(USArrests,scale=TRUE)
 (pr.out$sdev)

@@ -304,39 +304,10 @@ $(document).ready(function () {
 <div id="part-a" class="section level1">
 <h1>Part (a)</h1>
 <p>Using the sdev output of the prcomp() function, as was done in Section 10.2.3.</p>
+<pre class="r"><code>rm(list=ls())</code></pre>
 <pre class="r"><code>#use the attach() function to quickly access targeted dataset.
 attach(USArrests)</code></pre>
 <pre><code>## The following objects are masked from USArrests (pos = 3):
-## 
-##     Assault, Murder, Rape, UrbanPop</code></pre>
-<pre><code>## The following objects are masked from USArrests (pos = 4):
-## 
-##     Assault, Murder, Rape, UrbanPop</code></pre>
-<pre><code>## The following objects are masked from USArrests (pos = 5):
-## 
-##     Assault, Murder, Rape, UrbanPop</code></pre>
-<pre><code>## The following objects are masked from USArrests (pos = 6):
-## 
-##     Assault, Murder, Rape, UrbanPop</code></pre>
-<pre><code>## The following objects are masked from USArrests (pos = 7):
-## 
-##     Assault, Murder, Rape, UrbanPop</code></pre>
-<pre><code>## The following objects are masked from USArrests (pos = 8):
-## 
-##     Assault, Murder, Rape, UrbanPop</code></pre>
-<pre><code>## The following objects are masked from USArrests (pos = 9):
-## 
-##     Assault, Murder, Rape, UrbanPop</code></pre>
-<pre><code>## The following objects are masked from USArrests (pos = 10):
-## 
-##     Assault, Murder, Rape, UrbanPop</code></pre>
-<pre><code>## The following objects are masked from USArrests (pos = 11):
-## 
-##     Assault, Murder, Rape, UrbanPop</code></pre>
-<pre><code>## The following objects are masked from USArrests (pos = 12):
-## 
-##     Assault, Murder, Rape, UrbanPop</code></pre>
-<pre><code>## The following objects are masked from USArrests (pos = 13):
 ## 
 ##     Assault, Murder, Rape, UrbanPop</code></pre>
 <pre class="r"><code>#use prcomp() funtion to perform PCA, by setting scale=true, standard deviation =1
@@ -349,7 +320,7 @@ pve &lt;- pr.var / sum(pr.var)
 <pre><code>## [1] 0.62006039 0.24744129 0.08914080 0.04335752</code></pre>
 <pre class="r"><code>#present our results in plot
 plot(pve, xlab=&quot;Principal Component&quot;, ylab=&quot; Proportion of Variance Explained &quot;,ylim=c(0,1) ,type=&#39;b&#39;)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
 <div id="part-b" class="section level1">
 <h1>Part (b)</h1>
