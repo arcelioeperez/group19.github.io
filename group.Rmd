@@ -11,5 +11,6 @@ Arcelio E. Perez
 # Works Cited 
 
 Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani. An Introduction to Statistical Learning : with Applications in R. New York:Springer, 2013.  
+    Chapter 10 - Unsupervised Learning  
     1) Lab 1 - Principal Component Analysis (Page 401)  
-    2) Applied Exercise - 8 
+    2) Applied Exercise - 8 (Page 416)
