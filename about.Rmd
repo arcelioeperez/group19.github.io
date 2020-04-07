@@ -24,7 +24,7 @@ We use the 'USArrests' dataset, which is part of the base R package (for more in
 type ?USArrests in your R console). This is a real dataset; we do not create it on the fly.
 We use the attach() function to quickly access it throughout this script. 
 
-```{r echo = TRUE}
+```{r echo = FALSE}
 attach(USArrests)
 ```
 
@@ -106,7 +106,7 @@ Now let us look at the first two PCs in a biplot. Biplots are named after their 
 display the principal component scores and loadings.
 
 ```{r echo = TRUE}
-biplot(pr.out,scale=0)
+biplot(pr.out,scale=0, cex=0.5)
 ``` 
 
 For a specific variable, the PC1 loading is the upper axis, and the PC2 loading is the right axis.
@@ -119,7 +119,7 @@ of the vectors used - and how this shows that principal components are only uniq
 ```{r echo = TRUE}
 pr.out$rotation <- -pr.out$rotation
 pr.out$x <- -pr.out$x
-biplot(pr.out,scale = 0)
+biplot(pr.out,scale = 0, cex = 0.5)
 ```
 
 We now see an exact mirror of the plot previously obtained. Note how Rape now has a loading of 0.54 on

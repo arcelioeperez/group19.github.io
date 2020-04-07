@@ -272,6 +272,9 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
+  <a href="group.html">Group Members and Works Cited</a>
+</li>
+<li>
   <a href="about.html">10 PCA Lab</a>
 </li>
 <li>
@@ -305,7 +308,6 @@ $(document).ready(function () {
 <div id="dataset-background" class="section level1">
 <h1>2. Dataset Background</h1>
 <p>We use the ‘USArrests’ dataset, which is part of the base R package (for more information, type ?USArrests in your R console). This is a real dataset; we do not create it on the fly. We use the attach() function to quickly access it throughout this script.</p>
-<pre class="r"><code>attach(USArrests)</code></pre>
 <pre><code>## The following objects are masked from USArrests (pos = 3):
 ## 
 ##     Assault, Murder, Rape, UrbanPop</code></pre>
@@ -319,6 +321,21 @@ $(document).ready(function () {
 ## 
 ##     Assault, Murder, Rape, UrbanPop</code></pre>
 <pre><code>## The following objects are masked from USArrests (pos = 7):
+## 
+##     Assault, Murder, Rape, UrbanPop</code></pre>
+<pre><code>## The following objects are masked from USArrests (pos = 8):
+## 
+##     Assault, Murder, Rape, UrbanPop</code></pre>
+<pre><code>## The following objects are masked from USArrests (pos = 9):
+## 
+##     Assault, Murder, Rape, UrbanPop</code></pre>
+<pre><code>## The following objects are masked from USArrests (pos = 10):
+## 
+##     Assault, Murder, Rape, UrbanPop</code></pre>
+<pre><code>## The following objects are masked from USArrests (pos = 11):
+## 
+##     Assault, Murder, Rape, UrbanPop</code></pre>
+<pre><code>## The following objects are masked from USArrests (pos = 12):
 ## 
 ##     Assault, Murder, Rape, UrbanPop</code></pre>
 <p>Let’s examine the dataset. The dataset has 50 rows, one for each US state, and 4 columns: (Murder, Assault, UrbanPop, and Rape).</p>
@@ -433,13 +450,13 @@ $(document).ready(function () {
 <pre class="r"><code>(dim(pr.out$x))</code></pre>
 <pre><code>## [1] 50  4</code></pre>
 <p>Now let us look at the first two PCs in a biplot. Biplots are named after their ability to simultaneously display the principal component scores and loadings.</p>
-<pre class="r"><code>biplot(pr.out,scale=0)</code></pre>
+<pre class="r"><code>biplot(pr.out,scale=0, cex=0.5)</code></pre>
 <p><img src="about_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>For a specific variable, the PC1 loading is the upper axis, and the PC2 loading is the right axis. For example, the plot tells us that Rape has a loading of -0.54 on the first component and -0.17 on the second component - this is where the word ‘Rape’ stands on the plot.</p>
 <p>The lab also illustrates how these vector representations can easily be mirrored by switching the signs of the vectors used - and how this shows that principal components are only unique up to a sign change:</p>
 <pre class="r"><code>pr.out$rotation &lt;- -pr.out$rotation
 pr.out$x &lt;- -pr.out$x
-biplot(pr.out,scale = 0)</code></pre>
+biplot(pr.out,scale = 0, cex = 0.5)</code></pre>
 <p><img src="about_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <p>We now see an exact mirror of the plot previously obtained. Note how Rape now has a loading of 0.54 on the first component and 0.17 on the second component.</p>
 <p>This plot does a good job at providing us with information on the variables. We see that Murder, Assault and Rape are closely packed together on the graph, indicating that they are highly correlated. On the other hand, UrbanPop is further apart, indicating a lower correlation with the other 3 variables.</p>

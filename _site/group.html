@@ -11,7 +11,7 @@
 
 
 
-<title>Applied Exercise - 8</title>
+<title>Group Members and Works Cited</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -292,86 +292,23 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Applied Exercise - 8</h1>
+<h1 class="title toc-ignore">Group Members and Works Cited</h1>
 
 </div>
 
 
-<div id="objective" class="section level2">
-<h2>Objective</h2>
-<p>In Section 10.2.3, a formula for calculating PVE was given in Equation10.8. We also saw that the PVE can be obtained using the sdev output of the prcomp() function. On the USArrests data, calculate PVE in two ways:</p>
+<div id="group-members" class="section level1">
+<h1>Group Members</h1>
+<p>Nicolas Op de Beeck<br />
+Na Chen<br />
+Jacob Davis<br />
+Arcelio E. Perez</p>
 </div>
-<div id="part-a" class="section level1">
-<h1>Part (a)</h1>
-<p>Using the sdev output of the prcomp() function, as was done in Section 10.2.3.</p>
-<pre class="r"><code>#use the attach() function to quickly access targeted dataset.
-attach(USArrests)</code></pre>
-<pre><code>## The following objects are masked from USArrests (pos = 3):
-## 
-##     Assault, Murder, Rape, UrbanPop</code></pre>
-<pre><code>## The following objects are masked from USArrests (pos = 4):
-## 
-##     Assault, Murder, Rape, UrbanPop</code></pre>
-<pre><code>## The following objects are masked from USArrests (pos = 5):
-## 
-##     Assault, Murder, Rape, UrbanPop</code></pre>
-<pre><code>## The following objects are masked from USArrests (pos = 6):
-## 
-##     Assault, Murder, Rape, UrbanPop</code></pre>
-<pre><code>## The following objects are masked from USArrests (pos = 7):
-## 
-##     Assault, Murder, Rape, UrbanPop</code></pre>
-<pre><code>## The following objects are masked from USArrests (pos = 8):
-## 
-##     Assault, Murder, Rape, UrbanPop</code></pre>
-<pre><code>## The following objects are masked from USArrests (pos = 9):
-## 
-##     Assault, Murder, Rape, UrbanPop</code></pre>
-<pre><code>## The following objects are masked from USArrests (pos = 10):
-## 
-##     Assault, Murder, Rape, UrbanPop</code></pre>
-<pre><code>## The following objects are masked from USArrests (pos = 11):
-## 
-##     Assault, Murder, Rape, UrbanPop</code></pre>
-<pre><code>## The following objects are masked from USArrests (pos = 12):
-## 
-##     Assault, Murder, Rape, UrbanPop</code></pre>
-<pre><code>## The following objects are masked from USArrests (pos = 13):
-## 
-##     Assault, Murder, Rape, UrbanPop</code></pre>
-<pre class="r"><code>#use prcomp() funtion to perform PCA, by setting scale=true, standard deviation =1
-pr.out &lt;- prcomp(USArrests,scale=TRUE)
-(pr.out$sdev)</code></pre>
-<pre><code>## [1] 1.5748783 0.9948694 0.5971291 0.4164494</code></pre>
-<pre class="r"><code>pr.var &lt;- pr.out$sdev^2
-pve &lt;- pr.var / sum(pr.var)
-(pve)</code></pre>
-<pre><code>## [1] 0.62006039 0.24744129 0.08914080 0.04335752</code></pre>
-<pre class="r"><code>#present our results in plot
-plot(pve, xlab=&quot;Principal Component&quot;, ylab=&quot; Proportion of Variance Explained &quot;,ylim=c(0,1) ,type=&#39;b&#39;)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-</div>
-<div id="part-b" class="section level1">
-<h1>Part (b)</h1>
-<p>By applying Equation 10.8 directly. That is, use the prcomp() function to compute the principal component loadings. Then,use those loadings in Equation 10.8 to obtain the PVE.These two approaches should give the same results.</p>
-<pre class="r"><code>#obtain loadings from prcomp() function
-loadings&lt;-pr.out$rotation
-#scale dataset just to make sure data we us is consistent
-USArrests2 &lt;- scale(USArrests)
-#convert dataset into matrix, square each value in matrix, and sum them up 
-#to get the denominator of the equation
-sumvalue&lt;-sum(as.matrix(USArrests2)^2)
-#multiple these two matrix and then sqaure
-num&lt;-(as.matrix(USArrests2)%*%loadings)^2
-#calculate the column value for num matrix
-colvalue&lt;-c()
-for (i in 1:length(num[1,])){
-  colvalue[i]&lt;-sum(num[,i])
-}
-#calculate new pve
-pve1&lt;-colvalue/sumvalue
-(pve1)</code></pre>
-<pre><code>## [1] 0.62006039 0.24744129 0.08914080 0.04335752</code></pre>
+<div id="works-cited" class="section level1">
+<h1>Works Cited</h1>
+<p>Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani. An Introduction to Statistical Learning : with Applications in R. New York:Springer, 2013.<br />
+1) Lab 1 - Principal Component Analysis (Page 401)<br />
+2) Applied Exercise - 8</p>
 </div>
 
 

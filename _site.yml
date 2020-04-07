@@ -2,6 +2,8 @@ name: "my-website"
 navbar:
   title: "Group 19"
   left:
+    - text: "Group Members and Works Cited"
+      href: group.html
     - text: "10 PCA Lab"
       href: about.html
     - text: "Applied Exercise - 8"
