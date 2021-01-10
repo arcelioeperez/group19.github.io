@@ -10,5 +10,5 @@ navbar:
       href: index.html
 output: 
   html_document: 
-    theme: cosmo 
+    theme: slate
     highlight: textmate 
